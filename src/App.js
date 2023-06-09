@@ -9,13 +9,13 @@ import SurfSpotPage from './pages/SurfSpotPage/SurfSpotPage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
 import SurfSessionPage from './pages/SurfSessionPage/SurfSessionPage'
 import InsightsPage from './pages/InsightsPage/InsightsPage'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <AuthProvider>
         <MainNavbar />
         <Routes>
@@ -56,7 +56,7 @@ function App() {
           theme="light"
         />
       </AuthProvider>
-    </Router>
+    </BrowserRouter>
   )
 }
 
