@@ -1,6 +1,8 @@
 import { MapContainer, TileLayer } from 'react-leaflet'
 import useApiData from '../../../hooks/useApiData'
 import LocationMarker from './LocationMarker'
+import { MoonLoader } from 'react-spinners'
+import { Suspense } from 'react'
 
 const Map = () => {
     const {data} = useApiData('/api/buoys/')
@@ -12,9 +14,11 @@ const Map = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {data.map((marker, index) => {
-            return <LocationMarker key={index} data={marker} />
-        })}
+        <Suspense fallback={<MoonLoader />}>
+            {data.map((marker, index) => {
+                return <LocationMarker key={index} data={marker} />
+            })}
+        </Suspense>
     </MapContainer>
     </div>
   )
