@@ -3,3 +3,4 @@ build
 deploy
 deploy_prod.sh
 .env
+.devcontainer
