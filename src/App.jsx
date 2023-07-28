@@ -1,9 +1,13 @@
+import HomePage from './pages/Home/HomePage'
+import './App.css'
+import Navbar from './components/Navbar'
 
 function App() {
 
   return (
     <div>
-      Test
+      <Navbar />
+      <HomePage />
     </div>
   )
 }
