@@ -15,9 +15,9 @@ const Map = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Suspense fallback={<MoonLoader />}>
-            {data.map((marker, index) => {
-                return <LocationMarker key={index} data={marker} />
-            })}
+                {/* {data.map((marker, index) => {
+                    return <LocationMarker key={index} data={marker} />
+                })} */}
         </Suspense>
     </MapContainer>
     </div>
