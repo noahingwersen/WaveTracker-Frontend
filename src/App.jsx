@@ -13,7 +13,7 @@ function App() {
     <SWRConfig value={{
       onError: (error, key) => {
         if (error?.showToast) {
-          toast.error(error.message)
+          toast.error(error.toastMessage)
         }
       }
     }}>
