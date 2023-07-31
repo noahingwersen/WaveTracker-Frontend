@@ -4,11 +4,12 @@ import Navbar from './components/Navbar'
 import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { SWRConfig } from 'swr'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <SWRConfig
         value={{
           onError: (error) => {
@@ -19,7 +20,9 @@ function App() {
         }}
       >
         <Navbar />
-        <HomePage />
+        <Routes>
+          <Route element={<HomePage />} path='/' exact />
+        </Routes>
       </SWRConfig>
       <ToastContainer
         position='bottom-right'
@@ -33,7 +36,7 @@ function App() {
         pauseOnHover
         theme='light'
       />
-    </>
+    </BrowserRouter>
   )
 }
 
