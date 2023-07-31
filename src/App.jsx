@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar'
 import NotFound from './components/NotFound'
 import GlobalConfig from './components/GlobalConfig'
 import { Routes, Route } from 'react-router-dom'
+import LoginPage from './pages/Login/LoginPage'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route element={<NotFound />} path='*' />
             <Route element={<HomePage />} path='/' exact />
+            <Route element={<LoginPage />} path='/login' />
           </Routes>
         </div>
       </>

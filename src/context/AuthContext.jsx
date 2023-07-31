@@ -44,6 +44,7 @@ export const AuthProvider = ({ children }) => {
 
       navigate('/')
     } catch (error) {
+      console.log(error)
       let message = 'An unknown error has occurred'
 
       if (error.response.status === 401) {
