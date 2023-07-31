@@ -17,7 +17,7 @@ const Map = () => {
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
         {data.map((marker, index) => {
-          return <LocationMarker key={index} data={marker} />
+          return <LocationMarker key={index} marker={marker} />
         })}
       </MapContainer>
     </div>
