@@ -1,8 +1,7 @@
 import { Marker } from "react-leaflet"
 
 const LocationMarker = ({data}) => {
-
-    const position = [data.latitude, data.longitude]
+  const position = [data.latitude, data.longitude]
 
   return (
     <Marker position={position}>
