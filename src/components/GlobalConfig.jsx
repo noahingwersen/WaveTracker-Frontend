@@ -2,6 +2,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { SWRConfig } from 'swr'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { AuthProvider } from '../context/AuthContext'
 
 const GlobalConfig = ({ children }) => {
   return (
@@ -15,7 +16,7 @@ const GlobalConfig = ({ children }) => {
           },
         }}
       >
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </SWRConfig>
       <ToastContainer
         position='bottom-right'

@@ -1,6 +1,6 @@
 import HomePage from './pages/Home/HomePage'
 import './App.css'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar/Navbar'
 import NotFound from './components/NotFound'
 import GlobalConfig from './components/GlobalConfig'
 import { Routes, Route } from 'react-router-dom'
