@@ -2,6 +2,7 @@ import { createContext, useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
 import jwt_decode from 'jwt-decode'
+import { toast } from 'react-toastify'
 
 const AuthContext = createContext()
 
@@ -36,25 +37,21 @@ export const AuthProvider = ({ children }) => {
       setUser(jwt_decode(data.access))
 
       // No checkbox if redirected from register page
-      if ('saveToken' in e.target) {
-        e.target.saveToken.checked
+      if ('rememberCheck' in e.target) {
+        e.target.rememberCheck.checked
           ? localStorage.setItem('authTokens', JSON.stringify(data))
           : localStorage.removeItem('authTokens')
       }
 
       navigate('/')
     } catch (error) {
-      console.log(error)
       let message = 'An unknown error has occurred'
 
       if (error.response.status === 401) {
         message = 'Invalid username or password'
       }
 
-      error.showToast = true
-      error.toastMessage = message
-
-      throw error
+      toast.error(message)
     }
   }
 

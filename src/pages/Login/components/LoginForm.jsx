@@ -8,13 +8,7 @@ const LoginForm = () => {
   const { loginUser } = useAuth()
   const submit = async (e) => {
     setLoading(true)
-    try {
-      await loginUser(e)
-    } catch (error) {
-      setLoading(false)
-      console.log('Throwing error')
-      throw error
-    }
+    await loginUser(e)
     setLoading(false)
   }
 
