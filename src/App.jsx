@@ -1,19 +1,19 @@
-import HomePage from "./pages/Home/HomePage";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import { toast } from "react-toastify";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { SWRConfig } from "swr";
+import HomePage from './pages/Home/HomePage'
+import './App.css'
+import Navbar from './components/Navbar'
+import { toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { SWRConfig } from 'swr'
 
 function App() {
   return (
     <>
       <SWRConfig
         value={{
-          onError: (error, key) => {
+          onError: (error) => {
             if (error?.showToast) {
-              toast.error(error.toastMessage);
+              toast.error(error.toastMessage)
             }
           },
         }}
@@ -22,7 +22,7 @@ function App() {
         <HomePage />
       </SWRConfig>
       <ToastContainer
-        position="bottom-right"
+        position='bottom-right'
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -31,10 +31,10 @@ function App() {
         pauseOnFocusLoss={false}
         draggable
         pauseOnHover
-        theme="light"
+        theme='light'
       />
     </>
-  );
+  )
 }
 
-export default App;
+export default App

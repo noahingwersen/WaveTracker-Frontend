@@ -1,8 +1,8 @@
-import { Marker } from "react-leaflet";
+import { Marker } from 'react-leaflet'
 
 const LocationMarker = ({ data }) => {
-  const position = [data.latitude, data.longitude];
+  const position = [data.latitude, data.longitude]
 
-  return <Marker position={position}></Marker>;
-};
-export default LocationMarker;
+  return <Marker position={position}></Marker>
+}
+export default LocationMarker
