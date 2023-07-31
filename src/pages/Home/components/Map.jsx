@@ -14,11 +14,9 @@ const Map = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Suspense fallback={<LoadingSpinner />}>
-                {data.map((marker, index) => {
-                    return <LocationMarker key={index} data={marker} />
-                })}
-        </Suspense>
+        {data.map((marker, index) => {
+            return <LocationMarker key={index} data={marker} />
+        })}
     </MapContainer>
     </div>
     )
