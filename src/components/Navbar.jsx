@@ -5,7 +5,7 @@ const Navbar = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false)
 
   return (
-    <nav className='bg-gray-800'>
+    <nav className='bg-gray-800 absolute w-full'>
       <div className='mx-auto px-2 sm:px-6 lg:px-8'>
         <div className='relative flex h-16 items-center justify-between'>
           <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>

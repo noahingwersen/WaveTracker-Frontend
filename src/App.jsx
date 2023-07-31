@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { SWRConfig } from 'swr'
+import NotFound from './components/NotFound'
 
 function App() {
   return (
@@ -20,9 +21,12 @@ function App() {
         }}
       >
         <Navbar />
-        <Routes>
-          <Route element={<HomePage />} path='/' exact />
-        </Routes>
+        <div className='box-border pt-16 h-full'>
+          <Routes>
+            <Route element={<NotFound />} path='*' />
+            <Route element={<HomePage />} path='/' exact />
+          </Routes>
+        </div>
       </SWRConfig>
       <ToastContainer
         position='bottom-right'
