@@ -1,30 +1,31 @@
-import useSWR from 'swr'
-import { useCallback } from 'react'
-import axiosPrivate from '../api/axios'
-import useAuth from './useAuth'
+import { useState, useEffect } from 'react'
+import useWaveTrackerAxios from './useWaveTrackerAxios'
+import { toast } from 'react-toastify'
 
-function useApiData(apiUrl) {
-  const { authTokens } = useAuth()
+function useApiData(endpoint) {
+  const waveAxios = useWaveTrackerAxios()
 
-  const fetcher = useCallback(
-    async (url) => {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true)
+      setError(null)
       try {
-        const response = await axiosPrivate.get(url, {
-          headers: { Authorization: `Bearer ${authTokens.access}` },
-        })
-        return await response.data
+        const response = await waveAxios.get(endpoint)
+        setData(await response.data)
       } catch (error) {
-        error.showToast = true
-        error.toastMessage = 'Unable to fetch data from the server!'
-
-        throw error
+        setError(error)
+        toast.error('Unable to fetch data from the server!')
       }
-    },
-    [authTokens],
-  )
+      setLoading(false)
+    }
 
-  const { data, error, isLoading } = useSWR(apiUrl, fetcher)
+    fetchData()
+  }, [endpoint, waveAxios])
 
-  return { data: data, error: error, isLoading: isLoading }
+  return [data, loading, error]
 }
 export default useApiData

@@ -1,6 +1,7 @@
 const MapError = () => {
+  console.log('error')
   return (
-    <div className='h-[93vh] w-full relative flex items-center justify-center'>
+    <div className='h-[93vh] w-full relative flex items-center justify-center z-[1001]'>
       <img
         src='blurred_map.png'
         className='h-full w-full top-0 left-0 absolute object-fill'

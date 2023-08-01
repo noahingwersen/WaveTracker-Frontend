@@ -1,9 +1,17 @@
 import { MapContainer, TileLayer } from 'react-leaflet'
 import useApiData from '../../../hooks/useApiData'
 import LocationMarker from './LocationMarker'
+import LoadingSpinner from '../../../components/LoadingSpinner'
+import { useEffect } from 'react'
 
 const Map = () => {
-  const { data } = useApiData('/api/markers/')
+  const [markers, markersLoading, error] = useApiData('/api/markers/')
+
+  useEffect(() => {
+    if (error) {
+      throw error
+    }
+  }, [error])
 
   return (
     <MapContainer
@@ -15,9 +23,14 @@ const Map = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       />
-      {data.map((marker, index) => {
-        return <LocationMarker key={index} marker={marker} />
-      })}
+      {markersLoading ? (
+        <LoadingSpinner />
+      ) : (
+        markers &&
+        markers.map((marker, index) => {
+          return <LocationMarker key={index} marker={marker} />
+        })
+      )}
     </MapContainer>
   )
 }

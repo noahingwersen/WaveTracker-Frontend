@@ -10,7 +10,6 @@ const useWaveTrackerAxios = () => {
     // Add access token to any request that is missing it
     const requestIntercept = axiosPrivate.interceptors.request.use(
       (config) => {
-        console.log('Request intercepted')
         if (!config.headers['Authorization'] && authTokens) {
           config.headers['Authorization'] = `Bearer ${authTokens.access}`
         }
@@ -21,10 +20,7 @@ const useWaveTrackerAxios = () => {
 
     // If the response is 401 (unauthorized) or 403 (forbidden), try refreshing the access token and resend
     const responseIntercept = axiosPrivate.interceptors.response.use(
-      (response) => {
-        console.log('Request went through')
-        return response
-      },
+      (response) => response,
       async (error) => {
         const prevRequest = error?.config
         if (
@@ -32,11 +28,9 @@ const useWaveTrackerAxios = () => {
             error?.response?.status === 401) &&
           !prevRequest?.sent
         ) {
-          console.log('Response intercepted')
           prevRequest.sent = true
           const newToken = await updateToken()
           prevRequest.headers['Authorization'] = `Bearer ${newToken}`
-          console.log('New token added')
           return axiosPrivate(prevRequest)
         }
         if (error?.name === 'CanceledError') {
