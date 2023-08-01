@@ -1,11 +1,20 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
 
 const ProfileMenu = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false)
+  const { logoutUser } = useAuth()
 
   return (
-    <div className='relative ml-3'>
+    <div
+      className='relative ml-3'
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          setShowProfileMenu(false)
+        }
+      }}
+    >
       <div>
         <button
           type='button'
@@ -42,6 +51,7 @@ const ProfileMenu = () => {
         aria-labelledby='user-menu-button'
         tabIndex='-1'
         hidden={!showProfileMenu}
+        onClick={() => setShowProfileMenu(false)}
       >
         {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
         <Link
@@ -58,6 +68,7 @@ const ProfileMenu = () => {
           role='menuitem'
           tabIndex='-1'
           id='user-menu-item-1'
+          onClick={logoutUser}
         >
           Sign out
         </button>
