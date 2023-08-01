@@ -2,6 +2,7 @@
 import { Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import SurfSpotPopup from './SurfSpotPopup'
+import SwellBuoyPopup from './SwellBuoyPopup'
 
 const LocationMarker = ({ marker }) => {
   const position = [marker.latitude, marker.longitude]
@@ -11,7 +12,7 @@ const LocationMarker = ({ marker }) => {
       case 'SurfSpot':
         return ['/icons/surfSpot.png', <SurfSpotPopup spot={marker} />]
       case 'SwellBuoy':
-        return ['/icons/swellBuoy.png', <Popup>Swell Buoy</Popup>]
+        return ['/icons/swellBuoy.png', <SwellBuoyPopup buoy={marker} />]
       case 'TideBuoy':
         return ['/icons/tideBuoy.png', <Popup>Tide Buoy</Popup>]
       default:
