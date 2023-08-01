@@ -1,25 +1,29 @@
 import useSWR from 'swr'
-import useWaveTrackerAxios from './useWaveTrackerAxios'
+import { useCallback } from 'react'
+import axiosPrivate from '../api/axios'
+import useAuth from './useAuth'
 
-function useApiData(url) {
-  const waveAxios = useWaveTrackerAxios()
+function useApiData(apiUrl) {
+  const { authTokens } = useAuth()
 
-  const fetcher = async (url) => {
-    try {
-      console.log(`Fetching ${url}`)
-      const response = await waveAxios.get(url)
-      return await response.data
-    } catch (error) {
-      error.showToast = true
-      error.toastMessage = 'Unable to load data from the server!'
+  const fetcher = useCallback(
+    async (url) => {
+      try {
+        const response = await axiosPrivate.get(url, {
+          headers: { Authorization: `Bearer ${authTokens.access}` },
+        })
+        return await response.data
+      } catch (error) {
+        error.showToast = true
+        error.toastMessage = 'Unable to fetch data from the server!'
 
-      throw error
-    }
-  }
+        throw error
+      }
+    },
+    [authTokens],
+  )
 
-  const { data, error, isLoading } = useSWR(url, fetcher, {
-    suspense: true,
-  })
+  const { data, error, isLoading } = useSWR(apiUrl, fetcher)
 
   return { data: data, error: error, isLoading: isLoading }
 }

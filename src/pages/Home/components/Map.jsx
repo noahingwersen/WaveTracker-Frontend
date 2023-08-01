@@ -3,7 +3,7 @@ import useApiData from '../../../hooks/useApiData'
 import LocationMarker from './LocationMarker'
 
 const Map = () => {
-  const { data } = useApiData('/api/buoys/')
+  const { data } = useApiData('/api/markers/')
 
   return (
     <MapContainer

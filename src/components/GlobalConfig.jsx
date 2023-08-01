@@ -9,6 +9,8 @@ const GlobalConfig = ({ children }) => {
     <BrowserRouter>
       <SWRConfig
         value={{
+          suspense: true,
+          revalidateOnFocus: false,
           onError: (error) => {
             if (error?.showToast) {
               toast.error(error.toastMessage)

@@ -44,7 +44,7 @@ const useWaveTrackerAxios = () => {
           return Promise.resolve(error)
         }
 
-        if (error?.config?.url.includes('token')) {
+        if (error?.config?.url?.includes('token')) {
           toast.error('An unkown authentication error has occurred.')
           logoutUser()
         }
