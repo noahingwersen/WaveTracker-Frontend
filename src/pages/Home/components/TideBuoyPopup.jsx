@@ -3,7 +3,9 @@ import useApiData from '../../../hooks/useApiData'
 import { useEffect } from 'react'
 
 const TideBuoyPopup = ({ buoy }) => {
-  const [data, loading, error] = useApiData(`/api/buoys/tide/${buoy.id}/data/`)
+  const [data, loading, error] = useApiData(
+    `/api/buoys/tide/${buoy.id}/data/?timezone=local`,
+  )
 
   useEffect(() => {
     if (error) {

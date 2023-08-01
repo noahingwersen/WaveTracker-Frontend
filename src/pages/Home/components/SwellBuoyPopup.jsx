@@ -4,7 +4,9 @@ import { useEffect } from 'react'
 
 const SwellBuoyPopup = ({ buoy }) => {
   const meters_to_feet = 3.28084
-  const [data, loading, error] = useApiData(`/api/buoys/swell/${buoy.id}/data/`)
+  const [data, loading, error] = useApiData(
+    `/api/buoys/swell/${buoy.id}/data/?timezone=local`,
+  )
 
   useEffect(() => {
     if (error) {
