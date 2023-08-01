@@ -68,10 +68,7 @@ export const AuthProvider = ({ children }) => {
       })
       loginUser(e)
     } catch (error) {
-      error.showToast = true
-      error.toastMessage = 'Unable to create account'
-
-      throw error
+      toast.error('Unable to create account.')
     }
   }
 

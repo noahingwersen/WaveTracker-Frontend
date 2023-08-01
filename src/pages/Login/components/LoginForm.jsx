@@ -56,7 +56,7 @@ const LoginForm = () => {
         </div>
 
         <Link
-          className='hover:underline'
+          className='hover:underline text-gray-500'
           onClick={() =>
             alert(
               "Oops! I haven't figured out how to do this yet. Reach out to me directly if you want to change your password",
@@ -66,12 +66,6 @@ const LoginForm = () => {
           Forgot password?
         </Link>
       </div>
-      {/* <button
-        type='submit'
-        className='w-full bg-blue-500 hover:bg-blue-400 text-white rounded-md mb-4 mt-8 py-2'
-      >
-        Log In
-      </button> */}
       <SubmitButton
         loading={loading}
         disabled={loading}
