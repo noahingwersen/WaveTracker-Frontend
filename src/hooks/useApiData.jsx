@@ -1,8 +1,21 @@
-import waveTrackerFetcher from '../api/fetcher'
 import useSWR from 'swr'
+import useWaveTrackerAxios from './useWaveTrackerAxios'
 
 function useApiData(url) {
-  const { data, error, isLoading } = useSWR(url, waveTrackerFetcher, {
+  const waveAxios = useWaveTrackerAxios()
+  const fetcher = async (url) => {
+    try {
+      const response = await waveAxios.get(url)
+      return response.data
+    } catch (error) {
+      error.showToast = true
+      error.toastMessage = 'Unable to load data from the server!'
+
+      throw error
+    }
+  }
+
+  const { data, error, isLoading } = useSWR(url, fetcher, {
     suspense: true,
   })
 
