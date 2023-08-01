@@ -4,6 +4,7 @@ import L from 'leaflet'
 import SurfSpotPopup from './SurfSpotPopup'
 import SwellBuoyPopup from './SwellBuoyPopup'
 import { ErrorBoundary } from 'react-error-boundary'
+import TideBuoyPopup from './TideBuoyPopup'
 
 const LocationMarker = ({ marker }) => {
   const position = [marker.latitude, marker.longitude]
@@ -15,7 +16,7 @@ const LocationMarker = ({ marker }) => {
       case 'SwellBuoy':
         return ['/icons/swellBuoy.png', <SwellBuoyPopup buoy={marker} />]
       case 'TideBuoy':
-        return ['/icons/tideBuoy.png', <Popup>Tide Buoy</Popup>]
+        return ['/icons/tideBuoy.png', <TideBuoyPopup buoy={marker} />]
       default:
         return ['/icons/buoy.png', <Popup>Marker</Popup>]
     }
