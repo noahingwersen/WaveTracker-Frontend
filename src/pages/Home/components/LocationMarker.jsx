@@ -3,6 +3,7 @@ import { Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import SurfSpotPopup from './SurfSpotPopup'
 import SwellBuoyPopup from './SwellBuoyPopup'
+import { ErrorBoundary } from 'react-error-boundary'
 
 const LocationMarker = ({ marker }) => {
   const position = [marker.latitude, marker.longitude]
@@ -27,7 +28,7 @@ const LocationMarker = ({ marker }) => {
       position={position}
       icon={L.icon({ iconUrl: iconURL, iconSize: 30 })}
     >
-      {popup}
+      <ErrorBoundary fallback={<Popup>Error</Popup>}>{popup}</ErrorBoundary>
     </Marker>
   )
 }

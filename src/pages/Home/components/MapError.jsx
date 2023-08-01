@@ -1,5 +1,4 @@
 const MapError = () => {
-  console.log('error')
   return (
     <div className='h-[93vh] w-full relative flex items-center justify-center z-[1001]'>
       <img
