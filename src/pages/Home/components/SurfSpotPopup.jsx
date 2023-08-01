@@ -1,7 +1,6 @@
 import { Popup } from 'react-leaflet'
 import { Link } from 'react-router-dom'
 import { useMap } from 'react-leaflet/hooks'
-import { ErrorBoundary } from 'react-error-boundary'
 
 const SurfSpotPopup = ({ spot }) => {
   const map = useMap()
@@ -12,10 +11,9 @@ const SurfSpotPopup = ({ spot }) => {
 
   return (
     <Popup>
-      <ErrorBoundary fallback={<p>Error</p>}>
-        <strong style={{ fontSize: '20px' }}>{spot.name}</strong>
-        <br />
-        <b>Sessions:</b> {spot.sessions}
+      <div>
+        <h3 className='text-lg font-bold'>{spot.name}</h3>
+        <b>Sessions:</b> {spot.surf_sessions.length}
         <br />
         <Link to='sessions/' state={{ spotName: spot.name }}>
           Add Surf Session
@@ -31,7 +29,7 @@ const SurfSpotPopup = ({ spot }) => {
         <Link onClick={() => buoyClick(spot.tide_buoy)}>
           {spot.tide_buoy.name}
         </Link>
-      </ErrorBoundary>
+      </div>
     </Popup>
   )
 }
