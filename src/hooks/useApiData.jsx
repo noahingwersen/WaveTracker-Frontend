@@ -3,10 +3,12 @@ import useWaveTrackerAxios from './useWaveTrackerAxios'
 
 function useApiData(url) {
   const waveAxios = useWaveTrackerAxios()
+
   const fetcher = async (url) => {
     try {
+      console.log(`Fetching ${url}`)
       const response = await waveAxios.get(url)
-      return response.data
+      return await response.data
     } catch (error) {
       error.showToast = true
       error.toastMessage = 'Unable to load data from the server!'

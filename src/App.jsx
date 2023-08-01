@@ -5,6 +5,7 @@ import NotFound from './components/NotFound'
 import GlobalConfig from './components/GlobalConfig'
 import { Routes, Route } from 'react-router-dom'
 import LoginPage from './pages/Login/LoginPage'
+import PrivateRoute from './utils/PrivateRoute'
 
 function App() {
   return (
@@ -14,8 +15,16 @@ function App() {
         <div className='box-border pt-16 h-full'>
           <Routes>
             <Route element={<NotFound />} path='*' />
-            <Route element={<HomePage />} path='/' exact />
             <Route element={<LoginPage />} path='/login' />
+            <Route
+              element={
+                <PrivateRoute>
+                  <HomePage />
+                </PrivateRoute>
+              }
+              path='/'
+              exact
+            />
           </Routes>
         </div>
       </>
