@@ -122,6 +122,7 @@ export const AuthProvider = ({ children }) => {
 
   const contextData = {
     user: user,
+    authTokens: authTokens,
     loginUser: loginUser,
     registerUser: registerUser,
     logoutUser: logoutUser,
