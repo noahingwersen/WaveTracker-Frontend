@@ -72,6 +72,17 @@ const SurfSpotTable = () => {
     setSaving(false)
   }
 
+  const deleteSpot = async (id) => {
+    try {
+      await waveAxios.delete('/api/spots/', { data: { id: id } })
+      setSurfSpots(surfSpots.filter((s) => s.id !== id))
+      toast.success('Surf spot removed')
+    } catch (error) {
+      console.log(error)
+      toast.error('Unable to remove surf spot')
+    }
+  }
+
   return loading ? (
     <LoadingSpinner />
   ) : (
@@ -99,6 +110,7 @@ const SurfSpotTable = () => {
                   swellBuoys={swellBuoys}
                   tideBuoys={tideBuoys}
                   updateSpot={updateSpot}
+                  deleteSpot={deleteSpot}
                 />
               ))}
           </tbody>

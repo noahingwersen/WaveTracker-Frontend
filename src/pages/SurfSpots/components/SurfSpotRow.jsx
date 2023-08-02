@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react'
 
-const SurfSpotRow = ({ index, spot, swellBuoys, tideBuoys, updateSpot }) => {
+const SurfSpotRow = ({
+  index,
+  spot,
+  swellBuoys,
+  tideBuoys,
+  updateSpot,
+  deleteSpot,
+}) => {
   const background = index % 2 == 0 ? 'bg-slate-100' : 'bg-transparent'
 
   // We don't need to track everything in "spot", just the updatables
@@ -89,6 +96,22 @@ const SurfSpotRow = ({ index, spot, swellBuoys, tideBuoys, updateSpot }) => {
         </select>
       </td>
       <td className='border py-2 px-4'>{spot.surf_sessions.length}</td>
+      <td className='border py-2 px-4'>
+        <button
+          className='border rounded-md px-2 py-1 border-red-500 text-red-500 hover:bg-red-500 hover:text-white'
+          onClick={() => {
+            if (
+              window.confirm(
+                'Are you sure you want to delete this surf spot? This action will also delete all surf sessions associated with this spot and cannot be undone.',
+              )
+            ) {
+              deleteSpot(spot.id)
+            }
+          }}
+        >
+          Delete
+        </button>
+      </td>
     </tr>
   )
 }
