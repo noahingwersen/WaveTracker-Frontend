@@ -1,15 +1,93 @@
-const SurfSpotRow = ({ index, spot }) => {
-  const background = index % 2 == 0 ? 'bg-slate-100' : ''
+import { useEffect, useState } from 'react'
 
-  const twoDecimal = (string) => parseFloat(string).toFixed(2).toString()
+const SurfSpotRow = ({ index, spot, swellBuoys, tideBuoys, updateSpot }) => {
+  const background = index % 2 == 0 ? 'bg-slate-100' : 'bg-transparent'
+
+  // We don't need to track everything in "spot", just the updatables
+  const initialValue = {
+    id: spot.id,
+    name: spot.name,
+    latitude: spot.latitude,
+    longitude: spot.longitude,
+    swell_buoy: spot.swell_buoy.id.toString(),
+    tide_buoy: spot.tide_buoy.id.toString(),
+  }
+  const [surfSpot, setSurfSpot] = useState(initialValue)
+
+  useEffect(() => {
+    updateSpot({ ...surfSpot }, initialValue)
+    // Adding "updateSpot" to the dependency array causes infinite re-render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [surfSpot])
 
   return (
     <tr className={background}>
-      <td className='border py-2 px-4'>{spot.name}</td>
-      <td className='border py-2 px-4'>{twoDecimal(spot.latitude)}</td>
-      <td className='border py-2 px-4'>-{twoDecimal(spot.longitude)}</td>
-      <td className='border py-2 px-4'>{spot.swell_buoy.name}</td>
-      <td className='border py-2 px-4'>{spot.tide_buoy.name}</td>
+      <td className='border py-2 px-2'>
+        <input
+          type='text'
+          className={`w-full px-2 ${background}`}
+          value={surfSpot.name}
+          onChange={(e) => setSurfSpot({ ...surfSpot, name: e.target.value })}
+        />
+      </td>
+      <td className='border py-2 px-2'>
+        <input
+          type='number'
+          className={`w-full px-2 ${background}`}
+          min={-90.0}
+          max={90.0}
+          step={0.000000001}
+          value={surfSpot.latitude}
+          onChange={(e) =>
+            setSurfSpot({ ...surfSpot, latitude: e.target.value })
+          }
+        />
+      </td>
+      <td className='border py-2 px-2'>
+        <input
+          type='number'
+          className={`w-full px-2 ${background}`}
+          min={-90.0}
+          max={90.0}
+          step={0.000000001}
+          value={surfSpot.longitude}
+          onChange={(e) =>
+            setSurfSpot({ ...surfSpot, longitude: e.target.value })
+          }
+        />
+      </td>
+      <td className='border py-2 px-2'>
+        <select
+          className={`w-full px-2 ${background}`}
+          value={surfSpot.swell_buoy}
+          onChange={(e) =>
+            setSurfSpot({ ...surfSpot, swell_buoy: e.target.value })
+          }
+        >
+          {swellBuoys &&
+            swellBuoys.map((buoy, index) => (
+              <option key={index} value={buoy.id}>
+                {buoy.name}
+              </option>
+            ))}
+        </select>
+      </td>
+      <td className='border py-2 px-4'>
+        <select
+          className={`w-full px-2 ${background}`}
+          value={surfSpot.tide_buoy}
+          onChange={(e) =>
+            setSurfSpot({ ...surfSpot, tide_buoy: e.target.value })
+          }
+        >
+          {tideBuoys &&
+            tideBuoys.map((buoy, index) => (
+              <option key={index} value={buoy.id}>
+                {buoy.name}
+              </option>
+            ))}
+        </select>
+      </td>
       <td className='border py-2 px-4'>{spot.surf_sessions.length}</td>
     </tr>
   )
