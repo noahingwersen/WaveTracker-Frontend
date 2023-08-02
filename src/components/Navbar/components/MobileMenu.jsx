@@ -13,7 +13,13 @@ const MobileMenu = () => {
           Home
         </Link>
         <Link
-          to='/add'
+          to='/spots'
+          className='text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium'
+        >
+          View
+        </Link>
+        <Link
+          to='/spots/add'
           className='text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium'
         >
           Add
