@@ -2,10 +2,12 @@ import { useState } from 'react'
 import SubmitButton from '../../../components/SubmitButton'
 import useWaveTrackerAxios from '../../../hooks/useWaveTrackerAxios'
 import { toast } from 'react-toastify'
+import useLinkProps from '../../../hooks/useLinkProps'
 
 const SurfSpotForm = ({ swellBuoys, tideBuoys }) => {
   const [loading, setLoading] = useState(false)
   const waveAxios = useWaveTrackerAxios()
+  const location = useLinkProps()
 
   const submit = async (e) => {
     setLoading(true)
@@ -57,6 +59,7 @@ const SurfSpotForm = ({ swellBuoys, tideBuoys }) => {
           step={0.000000001}
           id='latitudeInput'
           name='latitude'
+          defaultValue={location?.latitude.toFixed(4)}
           required
         />
       </div>
@@ -72,6 +75,7 @@ const SurfSpotForm = ({ swellBuoys, tideBuoys }) => {
           step={0.000000001}
           id='longitudeInput'
           name='longitude'
+          defaultValue={location?.longitude.toFixed(4)}
           required
         />
       </div>
