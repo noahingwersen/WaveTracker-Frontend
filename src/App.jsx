@@ -34,7 +34,7 @@ function App() {
                   <SurfSpotsPage />
                 </PrivateRoute>
               }
-              path='/spots'
+              path='/spots/*'
             />
           </Routes>
         </div>
