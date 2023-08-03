@@ -5,6 +5,7 @@ import SurfSpotRow from './SurfSpotRow'
 import SubmitButton from '../../../components/SubmitButton'
 import useWaveTrackerAxios from '../../../hooks/useWaveTrackerAxios'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 
 const SurfSpotTable = () => {
   const waveAxios = useWaveTrackerAxios()
@@ -115,14 +116,22 @@ const SurfSpotTable = () => {
               ))}
           </tbody>
         </table>
-        <form onSubmit={saveChanges}>
-          <SubmitButton
-            text='Save'
-            className='bg-green-500 hover:bg-green-400 disabled:bg-gray-500 text-white mt-4 py-2 max-w-[100px]'
-            disabled={updatedSpots.length === 0 || saving}
-            loading={saving}
-          />
-        </form>
+        <div className='flex items-center justify-between'>
+          <form onSubmit={saveChanges}>
+            <SubmitButton
+              text='Save'
+              className='bg-green-500 hover:bg-green-400 disabled:bg-gray-500 text-white mt-4 py-2 w-24'
+              disabled={updatedSpots.length === 0 || saving}
+              loading={saving}
+            />
+          </form>
+          <Link
+            className='text-center w-24 rounded-md px-3 bg-blue-500 hover:bg-blue-400 disabled:bg-gray-500 text-white mt-4 py-2'
+            to='/spots/add'
+          >
+            Add
+          </Link>
+        </div>
       </div>
     </div>
   )
