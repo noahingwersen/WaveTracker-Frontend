@@ -8,6 +8,7 @@ import LoginPage from './pages/Login/LoginPage'
 import PrivateRoute from './utils/PrivateRoute'
 import RegisterPage from './pages/Register/RegisterPage'
 import SurfSpotsPage from './pages/SurfSpots/SurfSpotsPage'
+import SurfSessionsPage from './pages/SurfSessions/SurfSessionsPage'
 
 function App() {
   return (
@@ -35,6 +36,14 @@ function App() {
                 </PrivateRoute>
               }
               path='/spots/*'
+            />
+            <Route
+              element={
+                <PrivateRoute>
+                  <SurfSessionsPage />
+                </PrivateRoute>
+              }
+              path='/sessions/*'
             />
           </Routes>
         </div>
