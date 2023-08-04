@@ -4,7 +4,7 @@ import useAuth from '../../../hooks/useAuth'
 
 const ProfileMenu = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false)
-  const { logoutUser } = useAuth()
+  const { user, logoutUser } = useAuth()
 
   return (
     <div
@@ -55,7 +55,7 @@ const ProfileMenu = () => {
       >
         {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
         <Link
-          to='/profile'
+          to={`/profile/${user.username}`}
           className='block px-4 py-2 text-sm text-gray-700'
           role='menuitem'
           tabIndex='-1'
