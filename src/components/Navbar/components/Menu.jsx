@@ -8,13 +8,6 @@ const Menu = () => {
   return (
     <div className='hidden sm:ml-6 sm:block'>
       <div className='flex space-x-4'>
-        {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-        <Link
-          to='/'
-          className='text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
-        >
-          Home
-        </Link>
         <div
           className='flex'
           onBlur={(e) => {
@@ -49,7 +42,7 @@ const Menu = () => {
             hidden={!showViewDropdown}
           >
             <ul
-              className='text-sm text-gray-700 dark:text-gray-400'
+              className='text-sm text-gray-300'
               onClick={() => setShowViewDropdown(false)}
             >
               <li>
@@ -107,7 +100,7 @@ const Menu = () => {
             hidden={!showAddDropdown}
           >
             <ul
-              className='text-sm text-gray-700 dark:text-gray-400'
+              className='text-sm text-gray-300'
               onClick={() => setShowAddDropdown(false)}
             >
               <li>
