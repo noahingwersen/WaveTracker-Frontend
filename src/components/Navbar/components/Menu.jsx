@@ -24,10 +24,25 @@ const Menu = () => {
           }}
         >
           <button
-            className='text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
+            className='flex items-center justify-between text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
             onClick={() => setShowViewDropdown(!showViewDropdown)}
           >
             View
+            <svg
+              className='ml-2.5 h-2.5 w-2.5'
+              aria-hidden='true'
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 10 6'
+            >
+              <path
+                stroke='currentColor'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='m1 1 4 4 4-4'
+              />
+            </svg>
           </button>
           <div
             className='absolute top-12 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600'
@@ -65,12 +80,27 @@ const Menu = () => {
           }}
         >
           <button
-            className='text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
+            className='flex items-center justify-between text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
             onClick={() => {
               setShowAddDropdown(!showAddDropdown)
             }}
           >
             Add
+            <svg
+              className='ml-2.5 h-2.5 w-2.5'
+              aria-hidden='true'
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 10 6'
+            >
+              <path
+                stroke='currentColor'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='m1 1 4 4 4-4'
+              />
+            </svg>
           </button>
           <div
             className='absolute top-12 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600'
