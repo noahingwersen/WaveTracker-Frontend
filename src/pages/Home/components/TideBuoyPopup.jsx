@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 const TideBuoyPopup = ({ buoy }) => {
   const [data, loading, error] = useApiData(
     `/api/buoys/tide/${buoy.id}/data/?timezone=local`,
+    `Unable to load data for tide buoy: ${buoy.name}`,
   )
 
   useEffect(() => {

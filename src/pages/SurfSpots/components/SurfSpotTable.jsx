@@ -10,11 +10,18 @@ import { Link } from 'react-router-dom'
 const SurfSpotTable = () => {
   const waveAxios = useWaveTrackerAxios()
   const [saving, setSaving] = useState(false)
-  const [data, dataLoading, dataError] = useApiData('/api/spots/')
-  const [swellBuoys, swellBuoysLoading, swellBuoysError] =
-    useApiData('/api/buoys/swell/')
-  const [tideBuoys, tideBuoysLoading, tideBuoysError] =
-    useApiData('/api/buoys/tide/')
+  const [data, dataLoading, dataError] = useApiData(
+    '/api/spots/',
+    'Unable to load surf spots!',
+  )
+  const [swellBuoys, swellBuoysLoading, swellBuoysError] = useApiData(
+    '/api/buoys/swell/',
+    'Unable to load swell buoys!',
+  )
+  const [tideBuoys, tideBuoysLoading, tideBuoysError] = useApiData(
+    '/api/buoys/tide/',
+    'Unable to load tide buoys!',
+  )
 
   const loading = dataLoading || swellBuoysLoading || tideBuoysLoading
   const [updatedSpots, setUpdatedSpots] = useState([])

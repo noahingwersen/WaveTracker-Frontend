@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react'
 import useWaveTrackerAxios from './useWaveTrackerAxios'
 import { toast } from 'react-toastify'
 
-function useApiData(endpoint) {
+function useApiData(
+  endpoint,
+  errorMessage = 'Unable to fetch data from the server!',
+) {
   const waveAxios = useWaveTrackerAxios()
 
   const [data, setData] = useState(null)
@@ -18,13 +21,13 @@ function useApiData(endpoint) {
         setData(await response.data)
       } catch (error) {
         setError(error)
-        toast.error('Unable to fetch data from the server!')
+        toast.error(errorMessage)
       }
       setLoading(false)
     }
 
     fetchData()
-  }, [endpoint, waveAxios])
+  }, [endpoint, errorMessage, waveAxios])
 
   return [data, loading, error]
 }

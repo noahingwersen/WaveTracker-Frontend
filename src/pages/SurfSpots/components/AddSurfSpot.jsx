@@ -5,10 +5,14 @@ import LoadingSpinner from '../../../components/LoadingSpinner'
 import { useEffect } from 'react'
 
 const AddSurfSpot = () => {
-  const [swellBuoys, swellBuoysLoading, swellBuoysError] =
-    useApiData('/api/buoys/swell/')
-  const [tideBuoys, tideBuoysLoading, tideBuoysError] =
-    useApiData('/api/buoys/tide/')
+  const [swellBuoys, swellBuoysLoading, swellBuoysError] = useApiData(
+    '/api/buoys/swell/',
+    'Unable to load swell buoys!',
+  )
+  const [tideBuoys, tideBuoysLoading, tideBuoysError] = useApiData(
+    '/api/buoys/tide/',
+    'Unable to load tide buoys!',
+  )
 
   const loading = swellBuoysLoading || tideBuoysLoading
 

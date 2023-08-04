@@ -6,6 +6,7 @@ const SwellBuoyPopup = ({ buoy }) => {
   const meters_to_feet = 3.28084
   const [data, loading, error] = useApiData(
     `/api/buoys/swell/${buoy.id}/data/?timezone=local`,
+    `Unable to load data for swell buoy: ${buoy.name}`,
   )
 
   useEffect(() => {

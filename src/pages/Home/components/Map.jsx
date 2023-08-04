@@ -8,7 +8,10 @@ import 'leaflet-contextmenu'
 import 'leaflet-contextmenu/dist/leaflet.contextmenu.css'
 
 const Map = () => {
-  const [markers, markersLoading, error] = useApiData('/api/markers/')
+  const [markers, markersLoading, error] = useApiData(
+    '/api/markers/',
+    'Unable to load marker data!',
+  )
   const navigate = useNavigate()
 
   const addSurfSpot = (e) => {
