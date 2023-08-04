@@ -63,12 +63,15 @@ const Navbar = () => {
             </button>
           </div>
           <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
-            <div className='flex flex-shrink-0 items-center'>
+            <div className='flex flex-shrink-0 items-center justify-between'>
               <img
-                className='h-8 w-auto'
+                className='h-8 w-auto mr-3'
                 src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
                 alt='Your Company'
               />
+              <span className='self-center whitespace-nowrap text-2xl font-semibold dark:text-white'>
+                WaveTracker
+              </span>
             </div>
             <Menu />
           </div>
