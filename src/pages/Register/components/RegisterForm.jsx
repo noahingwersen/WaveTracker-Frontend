@@ -79,7 +79,7 @@ const RegisterForm = () => {
         loading={loading}
         disabled={loading}
         text='Register'
-        className='bg-green-500 hover:bg-green-400 disabled:bg-gray-500 text-white mb-4 mt-8 py-2'
+        className='w-full bg-green-500 hover:bg-green-400 disabled:bg-gray-500 text-white mb-4 mt-8 py-2'
       />
       <div className='text-right text-sm'>
         <p className='text-gray-500'>

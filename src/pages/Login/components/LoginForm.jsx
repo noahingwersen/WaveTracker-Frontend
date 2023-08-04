@@ -70,7 +70,7 @@ const LoginForm = () => {
         loading={loading}
         disabled={loading}
         text='Log In'
-        className='bg-blue-500 hover:bg-blue-400 disabled:bg-gray-500 text-white mb-4 mt-8 py-2'
+        className='w-full bg-blue-500 hover:bg-blue-400 disabled:bg-gray-500 text-white mb-4 mt-8 py-2'
       />
     </form>
   )

@@ -2,7 +2,7 @@ const SubmitButton = ({ loading, disabled, text, className }) => {
   return (
     <button
       type='submit'
-      className={`w-full rounded-md py-1 px-3 ${className}`}
+      className={`rounded-md py-1 px-3 ${className}`}
       disabled={disabled}
     >
       {!loading ? (

@@ -89,7 +89,7 @@ const SurfSessionForm = ({ surfSpots }) => {
       </div>
       <SubmitButton
         text='Add'
-        className='bg-blue-500 hover:bg-blue-400 disabled:bg-gray-500 text-white mb-4 mt-8 py-2'
+        className='w-full bg-blue-500 hover:bg-blue-400 disabled:bg-gray-500 text-white mb-4 mt-8 py-2'
         loading={loading}
         disabled={loading}
       />
