@@ -45,7 +45,7 @@ const Menu = () => {
             </svg>
           </button>
           <div
-            className='absolute top-12 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600'
+            className='absolute top-12 z-10 font-normal shadow rounded-lg w-44 bg-gray-700'
             hidden={!showViewDropdown}
           >
             <ul
@@ -55,7 +55,7 @@ const Menu = () => {
               <li>
                 <Link
                   to='/spots'
-                  className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                  className='block px-4 py-2 hover:bg-gray-600 hover:text-white hover:rounded-t-lg'
                 >
                   Surf Spots
                 </Link>
@@ -63,7 +63,7 @@ const Menu = () => {
               <li>
                 <Link
                   to='/sessions'
-                  className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                  className='block px-4 py-2 hover:bg-gray-600 hover:text-white hover:rounded-b-lg'
                 >
                   Surf Sessions
                 </Link>
@@ -103,7 +103,7 @@ const Menu = () => {
             </svg>
           </button>
           <div
-            className='absolute top-12 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600'
+            className='absolute top-12 z-10 font-normal shadow rounded-lg w-44 bg-gray-700'
             hidden={!showAddDropdown}
           >
             <ul
@@ -113,7 +113,7 @@ const Menu = () => {
               <li>
                 <Link
                   to='/spots/add'
-                  className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                  className='block px-4 py-2 hover:bg-gray-600 hover:text-white hover:rounded-t-lg'
                 >
                   New Surf Spot
                 </Link>
@@ -121,7 +121,7 @@ const Menu = () => {
               <li>
                 <Link
                   to='/sessions/add'
-                  className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                  className='block px-4 py-2 hover:bg-gray-600 hover:text-white hover:rounded-b-lg'
                 >
                   New Surf Session
                 </Link>
